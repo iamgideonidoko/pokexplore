@@ -4,8 +4,10 @@ import AppLayout from '@/layouts/app';
 import { Button, DebouncedInput } from '@/composables';
 import { SearchIcon } from 'lucide-react';
 import PokemonCard from '@/components/PokemonCard';
+// import { env } from '@/env';
 
 const HomeScreen = () => {
+  // console.log('env: ', env);
   return (
     <AppLayout>
       <div>
@@ -16,7 +18,7 @@ const HomeScreen = () => {
           placeholder="search eg, ditto or pikachu"
           className="rounded-xl !text-lg shadow-lg placeholder:text-lg placeholder:opacity-75"
         />
-        <Button className="rounded-xl bg-[#FF5350] px-5 shadow-lg">
+        <Button className="rounded-xl !bg-[#FF5350] px-5 shadow-lg">
           <SearchIcon className="scale-110" />
         </Button>
       </div>
