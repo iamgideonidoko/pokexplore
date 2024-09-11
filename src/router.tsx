@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Root } from "@/root";
 import { Home } from "@/screens/home";
+import { NotFound } from "./screens/404";
 
 export const router = createBrowserRouter([
   {
@@ -9,6 +10,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
