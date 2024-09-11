@@ -1,7 +1,8 @@
 import withHelmet from "@/hocs/withHelmet";
+import AppLayout from "@/layouts/app";
 
 const HomeScreen = () => {
-  return <div>Home Screen</div>;
+  return <AppLayout>Home Screen</AppLayout>;
 };
 
 export const Home = withHelmet(HomeScreen, {
