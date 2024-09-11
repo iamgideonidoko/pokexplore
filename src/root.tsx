@@ -1,5 +1,5 @@
-import withErrorBoundary from "./hocs/withErrorBoundary";
-import { Outlet, ScrollRestoration } from "react-router-dom";
+import withErrorBoundary from './hocs/withErrorBoundary';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 
 const RootComponent = () => {
   return (

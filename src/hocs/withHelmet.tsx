@@ -1,10 +1,7 @@
-import type { FC } from "react";
-import { Helmet } from "react-helmet";
+import type { FC } from 'react';
+import { Helmet } from 'react-helmet';
 
-const withHelmet = (
-  Component: FC,
-  { title, description }: Partial<Record<"title" | "description", string>>,
-) => {
+const withHelmet = (Component: FC, { title, description }: Partial<Record<'title' | 'description', string>>) => {
   const WithHelmet = () => {
     return (
       <>

@@ -1,0 +1,6 @@
+.git/
+.eslintcache
+.github/
+node_modules/
+build/
+src/vite-env.d.ts
