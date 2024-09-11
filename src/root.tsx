@@ -1,9 +1,10 @@
-function Root() {
+import { Outlet, ScrollRestoration } from "react-router-dom";
+
+export function Root() {
   return (
     <>
-      <h1 className="text-5xl text-center">POKEDEX APP</h1>
+      <Outlet />
+      <ScrollRestoration />
     </>
   );
 }
-
-export default Root;
