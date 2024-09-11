@@ -148,3 +148,5 @@ dist
 .DS_Store
 .AppleDouble
 .LSOverride
+
+.eslintcache
