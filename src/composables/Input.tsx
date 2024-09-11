@@ -29,7 +29,7 @@ export const DebouncedInput = forwardRef<
   } & InputProps
 >(({ onChange, debounce = 800, className, value: initialValue, ...props }, ref) => {
   const [value, setValue] = useState(initialValue);
-  const timerRef = useRef<number>();
+  const timerRef = useRef<NodeJS.Timeout>();
   return (
     <input
       ref={ref}
