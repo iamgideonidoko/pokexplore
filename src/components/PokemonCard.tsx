@@ -1,19 +1,28 @@
-const PokemonCard = () => {
+import type { FC } from 'react';
+import { Pokemon } from '@/interfaces/graphql';
+import { Button } from '@/composables';
+
+const PokemonCard: FC<Pokemon> = ({ name, number, image, types }) => {
   return (
-    <div className="w-96 max-w-full rounded-xl bg-white">
-      <div>
+    <div className="max-w-full rounded-xl bg-white p-4">
+      <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <span>Grass</span>
-          <span>Poison</span>
+          {types &&
+            types.map((type) => <span className="mr-2 rounded-full bg-[#BFC66C] px-4 py-1 text-sm">{type}</span>)}
         </div>
-        <div>#001</div>
+        <div>#{number ?? 'n/a'}</div>
       </div>
-      <div>
+      <div className="grid grid-cols-[60%,30%] items-end justify-between gap-2">
         <div>
-          <h3>Bulbasaur</h3>
-          <p>A strange seed was planted</p>
+          <h3 className="mt-2 text-2xl font-bold text-gray-900">{name}</h3>
+          <p className="mt-0.5 text-sm text-gray-700">
+            A strange seed was planted on its back at birth. The plant sprouts and glows with this pokémon.
+          </p>
+          <Button className="mt-4 rounded-lg bg-[#BFC66C] py-2">Know More</Button>
         </div>
-        <div></div>
+        <div>
+          <img src={image ?? ''} className="max-w-full" />
+        </div>
       </div>
     </div>
   );

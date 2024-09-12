@@ -8,6 +8,9 @@ dependencies:
   '@apollo/client':
     specifier: ^3.11.8
     version: 3.11.8(@types/react@18.3.3)(graphql@16.9.0)(react-dom@18.3.1)(react@18.3.1)
+  '@formkit/auto-animate':
+    specifier: ^0.8.2
+    version: 0.8.2
   '@t3-oss/env-core':
     specifier: ^0.11.1
     version: 0.11.1(typescript@5.5.3)(zod@3.23.8)
@@ -1205,6 +1208,10 @@ packages:
     resolution: {integrity: sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     dev: true
+
+  /@formkit/auto-animate@0.8.2:
+    resolution: {integrity: sha512-SwPWfeRa5veb1hOIBMdzI+73te5puUBHmqqaF1Bu7FjvxlYSz/kJcZKSa9Cg60zL0uRNeJL2SbRxV6Jp6Q1nFQ==}
+    dev: false
 
   /@graphql-codegen/add@5.0.3(graphql@16.9.0):
     resolution: {integrity: sha512-SxXPmramkth8XtBlAHu4H4jYcYXM/o3p01+psU+0NADQowA8jtYkK6MW5rV6T+CxkEaNZItfSmZRPgIuypcqnA==}
