@@ -8,6 +8,7 @@ import { useEffect, useState, useCallback } from 'react';
 import type { Pokemon } from '@/interfaces/graphql';
 import { SearchForm } from '@/components/SearchForm';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { twMerge } from 'tailwind-merge';
 
 const HomeScreen = () => {
   const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>([]);
@@ -40,7 +41,14 @@ const HomeScreen = () => {
       {data && (
         <div>
           <SearchForm updatePokemons={updatePokemons} pokemons={data.pokemons ?? []} />
-          <div ref={parent} className="mt-8 grid grid-cols-3 gap-4 max-[1110px]:grid-cols-2 max-[600px]:grid-cols-1">
+          <div
+            ref={parent}
+            className={twMerge(
+              'mt-8',
+              filteredPokemons.length > 0 && 'grid grid-cols-3 gap-4 max-[1110px]:grid-cols-2 max-[600px]:grid-cols-1',
+            )}
+          >
+            {filteredPokemons.length === 0 && <p className="mt-16 text-center">No pokémon found</p>}
             {filteredPokemons.map((pokemon) => {
               return <PokemonCard {...pokemon} />;
             })}
