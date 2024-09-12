@@ -4,7 +4,7 @@ import { Button } from '@/composables';
 
 const PokemonCard: FC<Pokemon> = ({ name, number, image, types }) => {
   return (
-    <div className="max-w-full rounded-xl bg-white p-4">
+    <div className="max-w-full rounded-xl bg-white p-4 shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           {types &&

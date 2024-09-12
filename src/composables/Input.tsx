@@ -1,4 +1,4 @@
-import { type ComponentProps, forwardRef, useRef, useState } from 'react';
+import { type ComponentProps, forwardRef } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
@@ -21,32 +21,3 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({ className, ...p
 });
 
 Input.displayName = 'Input';
-
-export const DebouncedInput = forwardRef<
-  HTMLInputElement,
-  {
-    debounce?: number;
-  } & InputProps
->(({ onChange, debounce = 800, className, value: initialValue, ...props }, ref) => {
-  const [value, setValue] = useState(initialValue);
-  const timerRef = useRef<NodeJS.Timeout>();
-  return (
-    <input
-      ref={ref}
-      value={value}
-      className={inputStyles(className)({})}
-      {...props}
-      onChange={(...arg) => {
-        setValue(arg[0].target.value);
-        clearTimeout(timerRef.current);
-        timerRef.current = setTimeout(() => {
-          if (onChange) {
-            onChange(...arg);
-          }
-        }, debounce);
-      }}
-    />
-  );
-});
-
-DebouncedInput.displayName = 'DebouncedInput';

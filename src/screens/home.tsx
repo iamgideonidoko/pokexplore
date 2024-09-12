@@ -1,23 +1,26 @@
 import withHelmet from '@/hocs/withHelmet';
 import logo from '@/assets/images/logo.png';
 import AppLayout from '@/layouts/app';
-import { AutoSkeleton, Button, DebouncedInput } from '@/composables';
-import { SearchIcon } from 'lucide-react';
+import { AutoSkeleton } from '@/composables';
 import PokemonCard from '@/components/PokemonCard';
 import { useGetAllPokemons } from '@/hooks/pokemon';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import type { Pokemon } from '@/interfaces/graphql';
-// import { env } from '@/env';
+import { SearchForm } from '@/components/SearchForm';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const HomeScreen = () => {
   const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>([]);
   const { loading, data, error } = useGetAllPokemons();
   console.log({ loading, data, error });
+  const [parent] = useAutoAnimate();
   useEffect(() => {
     if (data?.pokemons) {
       setFilteredPokemons(data.pokemons);
     }
   }, [data]);
+  // Memoize update function
+  const updatePokemons = useCallback((pokemons: Pokemon[]) => setFilteredPokemons(pokemons), []);
   return (
     <AppLayout>
       <div>
@@ -36,16 +39,8 @@ const HomeScreen = () => {
       )}
       {data && (
         <div>
-          <form className="mt-8 grid grid-cols-[1fr,auto] gap-3">
-            <DebouncedInput
-              placeholder="search eg, ditto or pikachu"
-              className="rounded-xl !text-lg shadow-lg placeholder:text-lg placeholder:opacity-75"
-            />
-            <Button className="rounded-xl !bg-[#FF5350] px-5 shadow-lg">
-              <SearchIcon className="scale-110" />
-            </Button>
-          </form>
-          <div className="mt-8 grid grid-cols-3 gap-4 max-[1110px]:grid-cols-2 max-[600px]:grid-cols-1">
+          <SearchForm updatePokemons={updatePokemons} pokemons={data.pokemons ?? []} />
+          <div ref={parent} className="mt-8 grid grid-cols-3 gap-4 max-[1110px]:grid-cols-2 max-[600px]:grid-cols-1">
             {filteredPokemons.map((pokemon) => {
               return <PokemonCard {...pokemon} />;
             })}
