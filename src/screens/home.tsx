@@ -17,8 +17,6 @@ const HomeScreen = () => {
   const { loading, data, error } = useGetAllPokemons();
   const [searchParams] = useSearchParams();
   const comparePokemanName = searchParams.get('compare');
-  console.log({ comparePokemanName });
-  console.log({ loading, data, error });
   const [parent] = useAutoAnimate();
   useEffect(() => {
     if (data?.pokemons) {

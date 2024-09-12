@@ -3,6 +3,7 @@ import { Root } from '@/root';
 import { Home } from '@/screens/home';
 import { NotFound } from './screens/404';
 import { Pokemon } from './screens/pokemon.name';
+import { Comparison } from './screens/comparison';
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
       {
         path: '/pokemon/:name',
         element: <Pokemon />,
+      },
+      {
+        path: '/comparison',
+        element: <Comparison />,
       },
       {
         path: '*',

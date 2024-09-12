@@ -9,7 +9,6 @@ import { useParams } from 'react-router-dom';
 const PokemonScreen = () => {
   const { name } = useParams();
   const { loading, data, error } = useGetPokemonByName(name ?? '');
-  console.log({ loading, data, error });
   return (
     <AppLayout>
       {loading && <AutoSkeleton parentClassName="mt-[1.875rem] " unit={1} />}

@@ -4,13 +4,14 @@ import { ArrowRightIcon, Volume2Icon } from 'lucide-react';
 import { type FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-const PokemonBigCard: FC<Pokemon & Partial<{ use2Columns: boolean; showCompare?: boolean }>> = ({
+const PokemonBigCard: FC<Pokemon & Partial<{ use2Columns: boolean; showCompare?: boolean; comparing: boolean }>> = ({
   image,
   number,
   name,
   types,
   use2Columns = false,
   showCompare = false,
+  comparing = false,
 }) => {
   return (
     <div
@@ -31,9 +32,13 @@ const PokemonBigCard: FC<Pokemon & Partial<{ use2Columns: boolean; showCompare?:
         </div>
       )}
       <div>
-        <img src={image ?? ''} alt={`${name}'s image`} className="w-full" />
+        <img
+          src={image ?? ''}
+          alt={`${name}'s image`}
+          className={twMerge('w-full', comparing && 'mx-auto size-56 overflow-hidden object-contain')}
+        />
       </div>
-      <div className="self-start">
+      <div className={twMerge('self-start', comparing && 'mx-auto w-72 max-w-full')}>
         <div>
           <strong>#{number}</strong>
         </div>
