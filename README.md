@@ -2,6 +2,8 @@
 
 PokeXplore is a Pokédex app to browse, search, view details, and compare Pokémon stats side by side—perfect for quick access to Pokémon info.
 
+![Cover](./cover.png)
+
 ## Getting Started
 
 Install dependencies:
