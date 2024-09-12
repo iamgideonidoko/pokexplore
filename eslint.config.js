@@ -43,9 +43,6 @@ export default tseslint.config(
   {
     files: ['src/__tests__/**', 'src/**/*.test.js', 'src/**/*.test.jsx', 'src/**/*.test.ts', 'src/**/*.test.tsx'],
     extends: [jest.configs['flat/recommended'], jest.configs['flat/style']],
-    env: {
-      'jest/globals': true,
-    },
   },
   {
     files: ['src/hooks/**/*.hook.ts'],
