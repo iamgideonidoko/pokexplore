@@ -50,7 +50,7 @@ const HomeScreen = () => {
           >
             {filteredPokemons.length === 0 && <p className="mt-16 text-center">No pokémon found</p>}
             {filteredPokemons.map((pokemon) => {
-              return <PokemonCard {...pokemon} />;
+              return <PokemonCard key={pokemon.id} {...pokemon} />;
             })}
           </div>
         </div>

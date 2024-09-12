@@ -18,7 +18,9 @@ const PokemonCard: FC<Pokemon> = ({ name, number, image, types }) => {
           <p className="mt-0.5 text-sm text-gray-700">
             A strange seed was planted on its back at birth. The plant sprouts and glows with this pokémon.
           </p>
-          <Button className="mt-4 rounded-lg bg-[#BFC66C] py-2">Know More</Button>
+          <Button href={`/pokemon/${name?.toLowerCase() ?? ''}`} className="mt-4 rounded-lg bg-[#BFC66C] py-2">
+            Know More
+          </Button>
         </div>
         <div>
           <img src={image ?? ''} className="max-w-full" />
