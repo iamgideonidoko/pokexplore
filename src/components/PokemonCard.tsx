@@ -2,7 +2,15 @@ import type { FC } from 'react';
 import { Pokemon } from '@/interfaces/graphql';
 import { Button } from '@/composables';
 
-const PokemonCard: FC<Pokemon> = ({ name, number, image, types }) => {
+const PokemonCard: FC<Pokemon & Partial<{ showMore: boolean; showCompare: boolean; compare: string }>> = ({
+  name,
+  number,
+  image,
+  types,
+  showMore = false,
+  showCompare = false,
+  compare,
+}) => {
   return (
     <div className="max-w-full rounded-xl bg-white p-4 shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -18,9 +26,21 @@ const PokemonCard: FC<Pokemon> = ({ name, number, image, types }) => {
           <p className="mt-0.5 text-sm text-gray-700">
             A strange seed was planted on its back at birth. The plant sprouts and glows with this pokémon.
           </p>
-          <Button href={`/pokemon/${name?.toLowerCase() ?? ''}`} className="mt-4 rounded-lg bg-[#BFC66C] py-2">
-            Know More
-          </Button>
+          <div>
+            {showMore && (
+              <Button href={`/pokemon/${name?.toLowerCase() ?? ''}`} className="mt-4 rounded-lg !bg-[#BFC66C] py-2">
+                Know More
+              </Button>
+            )}
+            {showCompare && compare && (
+              <Button
+                href={`/comparison?first=${compare.toLowerCase()}&second=${name?.toLowerCase() ?? ''}`}
+                className="mt-4 rounded-lg !bg-[#BFC66C] py-2"
+              >
+                Compare
+              </Button>
+            )}
+          </div>
         </div>
         <div>
           <img src={image ?? ''} className="max-w-full" />

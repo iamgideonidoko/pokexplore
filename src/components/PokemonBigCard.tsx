@@ -1,10 +1,35 @@
+import { Button } from '@/composables';
 import { Pokemon } from '@/interfaces/graphql';
-import { Volume2Icon } from 'lucide-react';
+import { ArrowRightIcon, Volume2Icon } from 'lucide-react';
 import { type FC } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-const PokemonBigCard: FC<Pokemon> = ({ image, number, name, types }) => {
+const PokemonBigCard: FC<Pokemon & Partial<{ use2Columns: boolean; showCompare?: boolean }>> = ({
+  image,
+  number,
+  name,
+  types,
+  use2Columns = false,
+  showCompare = false,
+}) => {
   return (
-    <div className="grid grid-cols-[calc(65%-8rem),35%] items-center justify-between gap-32 overflow-hidden rounded-2xl bg-white p-10 shadow-2xl max-[1000px]:grid-cols-1">
+    <div
+      className={twMerge(
+        'relative mt-8 grid items-center justify-between gap-32 rounded-2xl bg-white p-10 shadow-2xl max-[1000px]:grid-cols-1',
+        use2Columns ? 'grid-cols-[calc(65%-8rem),35%]' : 'grid-cols-1',
+      )}
+    >
+      {showCompare && (
+        <div className="absolute -right-12 -top-12 ">
+          <Button
+            href={`/?compare=${name?.toLowerCase() ?? ''}`}
+            className="block size-24 scale-75 rounded-full pt-6 text-center"
+          >
+            <span>Compare</span>
+            <ArrowRightIcon className="mx-auto mt-1 block rotate-[320deg]" />
+          </Button>
+        </div>
+      )}
       <div>
         <img src={image ?? ''} alt={`${name}'s image`} className="w-full" />
       </div>

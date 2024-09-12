@@ -21,11 +21,13 @@ const PokemonScreen = () => {
       {!loading && !data?.pokemon && <p className="mt-16 text-center">Pokémon not found</p>}
       {data?.pokemon && (
         <>
-          <PokemonBigCard {...data.pokemon} />
+          <PokemonBigCard {...data.pokemon} showCompare use2Columns />
           <div className="mt-16 px-20">
             <h2 className="mb-8 text-4xl font-semibold">Evolution</h2>
             <div className="flex flex-wrap items-center gap-16">
-              {data.pokemon.evolutions?.length === 0 && <p className="mt-16 text-center">No record of evolution</p>}
+              {(!data.pokemon.evolutions || data.pokemon.evolutions?.length === 0) && (
+                <p className="mt-16 text-center">No record of evolution</p>
+              )}
               {data.pokemon.evolutions?.map((evolution, idx) => {
                 return (
                   <>
